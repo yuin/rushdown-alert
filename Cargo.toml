@@ -1,0 +1,29 @@
+[package]
+name = "rushdown-alert"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.87"
+description = "GitHub style alert blocks extension for rushdown markdown parser"
+documentation = "https://docs.rs/rushdown-alert"
+repository = "https://github.com/yuin/rushdown-alert"
+readme = "README.md"
+keywords = ["markdown", "commonmark"]
+license = "MIT"
+categories = ["text-processing"]
+resolver = "2"
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+codegen-units = 1
+panic = 'abort'
+
+[features]
+default = ["std"]
+std = ["rushdown/default"]
+alloc = []
+no-std = ["alloc", "rushdown/no-std"]
+
+[dependencies]
+rushdown = { version = "0.19.0", default-features = false }
